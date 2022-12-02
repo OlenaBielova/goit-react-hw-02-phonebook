@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { nanoid } from 'nanoid';
 import { Formik, ErrorMessage } from 'formik';
 import * as yup from 'yup';
@@ -12,6 +13,14 @@ import {
 } from './Form.styled';
 
 export class ContactForm extends React.Component {
+
+    static propTypes = {
+      initialValues: PropTypes.array,
+      
+    value: PropTypes.string,
+    onSubmit: PropTypes.func,
+  };
+
   schema = yup.object().shape({
     name: yup.string().required('Name is required'),
     number: yup
@@ -27,8 +36,9 @@ export class ContactForm extends React.Component {
   };
 
   handleSubmit = (values, { resetForm }) => {
-    values.id = nanoid();
-    this.props.onSubmit(values);
+    const fullValues = {...values};
+    fullValues.id = nanoid();
+    this.props.onSubmit(fullValues);
     resetForm();
   };
 

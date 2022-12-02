@@ -1,10 +1,20 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { ContactForm } from '../Form/Form';
 import { Filter } from '../Filter/Filter';
 import { ContactList } from '../ContactList/ContactList';
 import { Container } from './App.styled';
 
 export class App extends React.Component {
+  
+  static propTypes = {
+    contacts: PropTypes.array,
+    value: PropTypes.string,
+    onSubmit: PropTypes.func,
+    onChange: PropTypes.func,
+    onDeleteContact: PropTypes.func,
+  };
+
   state = {
     contacts: [],
     filter: '',
@@ -52,19 +62,20 @@ export class App extends React.Component {
   };
 
   render() {
+    const { filter } = this.state;
     return (
       <Container>
         <h3>Phonebook</h3>
-        <ContactForm onSubmit={this.handleFormSubmit}></ContactForm>
+        <ContactForm onSubmit={this.handleFormSubmit}/>
         <h3>Contacts</h3>
         <Filter
-          value={this.state.filter}
+          value={filter}
           onChange={this.handleSearchInputChange}
         />
         <ContactList
           contacts={this.getFilteredContacts()}
           onDeleteContact={this.deleteContact}
-        ></ContactList>
+        />
       </Container>
     );
   }

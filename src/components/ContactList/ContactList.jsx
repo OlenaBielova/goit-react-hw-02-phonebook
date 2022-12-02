@@ -1,11 +1,10 @@
 import React from 'react';
-import { nanoid } from 'nanoid';
 import { List, Contact, DeleteBtn } from './ContactList.styled';
 
 export const ContactList = ({ contacts, onDeleteContact }) => (
   <List>
     {contacts.map(({ name, number, id }) => (
-      <Contact key={nanoid()}>
+      <Contact key={id}>
         <p>
           {name} : {number}
         </p>
