@@ -72,10 +72,12 @@ export class App extends React.Component {
           value={filter}
           onChange={this.handleSearchInputChange}
         />
-        <ContactList
+        {this.getFilteredContacts().length > 0 && (
+          <ContactList
           contacts={this.getFilteredContacts()}
           onDeleteContact={this.deleteContact}
         />
+        )}
       </Container>
     );
   }
