@@ -15,10 +15,7 @@ import {
 export class ContactForm extends React.Component {
 
     static propTypes = {
-      initialValues: PropTypes.array,
-      
-    value: PropTypes.string,
-    onSubmit: PropTypes.func,
+      onSubmit: PropTypes.func,
   };
 
   schema = yup.object().shape({

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { SearchByName, SearchInput } from './Filter.styled';
 
 export const Filter = ({ value, onChange }) => (
@@ -7,3 +8,12 @@ export const Filter = ({ value, onChange }) => (
     <SearchInput type="text" value={value} onChange={onChange} name="filter" />
   </SearchByName>
 );
+
+Filter.propTypes = {
+  value: PropTypes.exact({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    number: PropTypes.string.isRequired,
+  }),
+  onChange: PropTypes.func
+};
