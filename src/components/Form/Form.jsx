@@ -36,9 +36,11 @@ export class ContactForm extends React.Component {
   };
 
   handleSubmit = (values, { resetForm }) => {
-    const fullValues = {...values};
-    fullValues.id = nanoid();
-    this.props.onSubmit(fullValues);
+    const newContact = {
+      ...values,
+      id: nanoid()
+    };
+    this.props.onSubmit(newContact);
     resetForm();
   };
 
