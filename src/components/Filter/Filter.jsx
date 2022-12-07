@@ -10,10 +10,6 @@ export const Filter = ({ value, onChange }) => (
 );
 
 Filter.propTypes = {
-  value: PropTypes.exact({
-    id: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    number: PropTypes.string.isRequired,
-  }),
+  value: PropTypes.string.isRequired,
   onChange: PropTypes.func
 };

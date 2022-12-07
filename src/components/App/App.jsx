@@ -6,19 +6,19 @@ import { Container } from './App.styled';
 
 export class App extends React.Component {
 
-  state = {
-    contacts: [],
-    filter: '',
-  };
   // state = {
-  //   contacts: [
-  //     { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
-  //     { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
-  //     { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
-  //     { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
-  //   ],
+  //   contacts: [],
   //   filter: '',
   // };
+  state = {
+    contacts: [
+      { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
+      { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
+      { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
+      { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
+    ],
+    filter: '',
+  };
 
   handleFormSubmit = data => {
     const { contacts } = this.state;
@@ -54,6 +54,7 @@ export class App extends React.Component {
 
   render() {
     const { filter } = this.state;
+    const filteredContacts = this.getFilteredContacts();
     return (
       <Container>
         <h3>Phonebook</h3>
@@ -63,9 +64,9 @@ export class App extends React.Component {
           value={filter}
           onChange={this.handleSearchInputChange}
         />
-        {this.getFilteredContacts().length > 0 && (
+        {filteredContacts.length > 0 && (
           <ContactList
-          contacts={this.getFilteredContacts()}
+          contacts={filteredContacts}
           onDeleteContact={this.deleteContact}
         />
         )}
